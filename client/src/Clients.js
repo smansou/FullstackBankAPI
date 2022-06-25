@@ -40,28 +40,13 @@ export default function Clients() {
         );
       });
     } else {
-      return <div className="ui message">Could not Load Data</div>;
+      return <tr className="ui message"><td>Could not Load Data</td></tr>;
     }
   };
 
   return (
     <div>
-      <div className="ui container">
-        <br />
-        <div className="ui blue inverted segment">
-          <div className="ui blue inverted menu">
-            <div className="item">
-              <h1 className="ui inverted header">NEWBANK</h1>
-            </div>
-
-            <div className="right item">
-              <div className="ui icon input">
-                <input type="text" placeholder="Search..." />
-                <i className="search link icon"></i>
-              </div>
-            </div>
-          </div>
-        </div>
+      
         <div className="ui divider"></div>
         <div className="five wide column">
           <div className="ui segment">
@@ -94,7 +79,6 @@ export default function Clients() {
                     New Value
                     <div className="ui left icon input">
                       <input type="text" placeholder="New Value" onChange={e=>setEdit({...edit, newValue: e.target.value })} />
-                      <i className="new icon"></i>
                     </div>
                   </div>
                   <div onClick={updateClient} className="ui button">Submit</div>
@@ -118,7 +102,6 @@ export default function Clients() {
         </div>
         <div className="ui grid"></div>
         <br />
-      </div>
     </div>
   );
 }

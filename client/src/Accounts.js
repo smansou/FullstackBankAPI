@@ -43,7 +43,7 @@ function Accounts() {
         );
       });
     } else {
-      return <div className="ui message">Could not Load Data</div>;
+      return <tr className="ui message"><td>Could not Load Data</td></tr>;
     }
   };
 
@@ -134,7 +134,7 @@ function Accounts() {
                   <th className="">Owner</th>
                 </tr>
               </thead>
-              {getAllAccounts()}
+              <tbody>{getAllAccounts()}</tbody>
             </table>
           </div>
         </div>

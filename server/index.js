@@ -16,9 +16,8 @@ mongoose
 .catch(err => console.log(err))
 
 const app = express();
-app.use(cors({
-  origin: 'http://localhost:3000'
-}));app.use(express.json());
+app.use(cors());
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/accounts', accountRouter);
 app.use('/clients', clientRouter);
