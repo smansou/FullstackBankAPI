@@ -23,7 +23,6 @@ export default function Clients() {
 
   const updateClient = async () =>{
       const {id, field, newValue} = edit;
-      console.log(id, newValue, field);
       await axios.patch(`http://localhost:5000/clients/${id}`, {[`${field}`]: newValue});
       setRefresh(!refresh);
   }
@@ -52,7 +51,7 @@ export default function Clients() {
         <div className="ui blue inverted segment">
           <div className="ui blue inverted menu">
             <div className="item">
-              <h1 className="ui inverted header">KANBANK</h1>
+              <h1 className="ui inverted header">NEWBANK</h1>
             </div>
 
             <div className="right item">
