@@ -1,6 +1,8 @@
 import "./accounts.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import React from "react";
+
 
 function Accounts() {
   const [accounts, setAccounts] = useState();
@@ -13,9 +15,7 @@ function Accounts() {
   const [refresh, setRefresh] = useState(true);
   useEffect(() => {
     async function fetch() {
-      const { data: accounts } = await axios.get(
-        "http://localhost:5000/accounts"
-      );
+      const { data: accounts } = await axios.get(`${process.env.REACT_APP_DBURL}/accounts`); //* change to ENV
       setAccounts(accounts);
     }
     fetch();
@@ -23,7 +23,7 @@ function Accounts() {
 
   const handleSubmit = async () => {
     const { id, field, newValue } = edit;
-    await axios.patch(`http://localhost:5000/accounts/${id}`, {
+    await axios.patch(`${process.env.REACT_APP_DBURL}/accounts/${id}`, {
       [`${field}`]: newValue,
     });
     setRefresh(!refresh);
@@ -50,30 +50,16 @@ function Accounts() {
   return (
     <div>
       <div className="ui container">
-        <br />
-        <div className="ui blue inverted segment">
-          <div className="ui blue inverted menu">
-            <div className="item">
-              <h1 className="ui inverted header">NEWBANK</h1>
-            </div>
-            <div className="right item">
-              <div className="ui icon input">
-                <input type="text" placeholder="Search..." />
-                <i className="search link icon"></i>
-              </div>
-            </div>
-          </div>
-        </div>
         <div className="ui divider"></div>
         <div className="five wide column">
           <div className="ui segment">
             <div onClick={() => setRefresh(!refresh)} className="ui button">
-              Get All Accounts
+              Refresh
             </div>
-            <div class="ui compact menu">
-              <div class="ui simple dropdown item">
+            <div className="ui compact menu">
+              <div className="ui simple dropdown item">
                 Edit
-                <i class="edit icon"></i>
+                <i className="edit icon"></i>
                 <div className="menu">
                   <div className="item">
                     Account ID

@@ -10,12 +10,10 @@ export default function Clients() {
     newValue: '',
   });
   const [refresh, setRefresh] = useState(true);
-
+  
   useEffect(() => {
-        async function fetch() {
-      const { data: clients } = await axios.get(
-        "http://localhost:5000/clients"
-      );
+    async function fetch() {
+      const { data: clients } = await axios.get(`${process.env.REACT_APP_DBURL}/clients`);
       setClients(clients);
     }
     fetch();
@@ -23,7 +21,7 @@ export default function Clients() {
 
   const updateClient = async () =>{
       const {id, field, newValue} = edit;
-      await axios.patch(`http://localhost:5000/clients/${id}`, {[`${field}`]: newValue});
+      await axios.patch(`${process.env.REACT_APP_DBURL}/clients/${id}`, {[`${field}`]: newValue});
       setRefresh(!refresh);
   }
 
@@ -46,7 +44,8 @@ export default function Clients() {
 
   return (
     <div>
-      
+            <div className="ui container">
+
         <div className="ui divider"></div>
         <div className="five wide column">
           <div className="ui segment">
@@ -102,6 +101,7 @@ export default function Clients() {
         </div>
         <div className="ui grid"></div>
         <br />
+    </div>
     </div>
   );
 }
